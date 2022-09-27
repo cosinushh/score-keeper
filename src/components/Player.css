@@ -1,0 +1,22 @@
+@import url("./Button.css");
+
+.player {
+  margin: 10px 0;
+  list-style: none;
+  list-style-type: none;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 3fr 2fr;
+}
+
+.score {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+h2 {
+  text-align: left;
+}

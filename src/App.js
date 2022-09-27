@@ -5,19 +5,6 @@ import Button from "./components/Button";
 import Playerform from "./components/Playerform";
 import { nanoid } from "nanoid";
 
-/* const initialPlayers = [
-  {
-    id: "98sad98s",
-    name: "Hans",
-    score: 0,
-  },
-  {
-    id: "6a762ass2",
-    name: "Kurt",
-    score: 10,
-  },
-]; */
-
 function App() {
   const [players, setPlayers] = useState([]);
 
@@ -53,24 +40,36 @@ function App() {
     );
   }
 
+  function resetScores() {
+    setPlayers((prevPlayers) =>
+      prevPlayers.map((player) => {
+        return { ...player, score: 0 };
+      })
+    );
+  }
+
+  function resetAll() {
+    setPlayers((prevPlayers) => (prevPlayers = []));
+  }
+
   return (
     <div className="App">
+      <h1>Score Keeper</h1>
       <ul>
         {players.map((player) => {
           return (
             <Player
               key={player.id}
-              id={player.id}
               playerName={player.name}
               score={player.score}
-              clickIncrease={increaseScore}
-              clickDecrease={decreaseScore}
+              clickIncrease={() => increaseScore(player.id)}
+              clickDecrease={() => decreaseScore(player.id)}
             />
           );
         })}
       </ul>
-      <Button text="Reset scores" />
-      <Button text="Reset all" />
+      <Button text="Reset scores" handler={resetScores} />
+      <Button text="Reset all" handler={resetAll} />
       <Playerform clickHandler={addPlayer} />
     </div>
   );

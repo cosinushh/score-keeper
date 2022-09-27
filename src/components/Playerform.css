@@ -1,0 +1,20 @@
+@import url("./Button.css");
+
+form {
+  margin-top: 20px;
+}
+
+input {
+  height: 30px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px auto;
+}
+
+label {
+  font-size: 18px;
+  margin: 10px auto;
+  font-weight: bold;
+}

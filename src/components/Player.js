@@ -1,16 +1,18 @@
-import styled from "styled-components";
+import "./Player.css";
 
-function Player({ playerName, score, clickIncrease, clickDecrease, id }) {
+function Player({ playerName, score, clickIncrease, clickDecrease }) {
   return (
-    <li>
+    <li className="player">
       <h2>{playerName}</h2>
-      <button type="button" onClick={() => clickDecrease(id)}>
-        -
-      </button>
-      <p>{score}</p>
-      <button type="button" onClick={() => clickIncrease(id)}>
-        +
-      </button>
+      <div className="score">
+        <button className="button-28" type="button" onClick={clickDecrease}>
+          -
+        </button>
+        <p>{score}</p>
+        <button className="button-28" type="button" onClick={clickIncrease}>
+          +
+        </button>
+      </div>
     </li>
   );
 }

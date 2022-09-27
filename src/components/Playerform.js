@@ -1,11 +1,13 @@
+import "./Playerform.css";
+
 function Playerform({ clickHandler }) {
   return (
     <form onSubmit={clickHandler}>
-      <label>
-        Add Playername:
-        <input type="text" name="playername" id="playername" />
-      </label>
-      <button type="submit">Add</button>
+      <label htmlFor="playername">Add Playername: </label>
+      <input type="text" name="playername" id="playername" />
+      <button className="button-28" type="submit">
+        Add player
+      </button>
     </form>
   );
 }
