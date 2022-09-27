@@ -5,7 +5,7 @@ import Button from "./components/Button";
 import Playerform from "./components/Playerform";
 import { nanoid } from "nanoid";
 
-const initialPlayers = [
+/* const initialPlayers = [
   {
     id: "98sad98s",
     name: "Hans",
@@ -16,10 +16,10 @@ const initialPlayers = [
     name: "Kurt",
     score: 10,
   },
-];
+]; */
 
 function App() {
-  const [players, setPlayers] = useState(initialPlayers);
+  const [players, setPlayers] = useState([]);
 
   function addPlayer(event) {
     event.preventDefault();
@@ -29,6 +29,30 @@ function App() {
     ]);
   }
 
+  function increaseScore(id) {
+    setPlayers((prevPlayers) =>
+      prevPlayers.map((player) => {
+        if (id === player.id) {
+          return { ...player, score: player.score + 1 };
+        } else {
+          return player;
+        }
+      })
+    );
+  }
+
+  function decreaseScore(id) {
+    setPlayers((prevPlayers) =>
+      prevPlayers.map((player) => {
+        if (id === player.id) {
+          return { ...player, score: player.score - 1 };
+        } else {
+          return player;
+        }
+      })
+    );
+  }
+
   return (
     <div className="App">
       <ul>
@@ -36,8 +60,11 @@ function App() {
           return (
             <Player
               key={player.id}
+              id={player.id}
               playerName={player.name}
               score={player.score}
+              clickIncrease={increaseScore}
+              clickDecrease={decreaseScore}
             />
           );
         })}
